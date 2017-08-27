@@ -11,6 +11,7 @@ output:
 ```{r load_libraries, message = FALSE}
 library("dplyr")
 library("lubridate")
+library("lattice")
 ```
 
 ```{r load_data}
@@ -112,4 +113,21 @@ median_of_steps_imputed
 
 ## Are there differences in activity patterns between weekdays and weekends?
 
+```{r weekemnd_activity}
+
+activity_imputed <- activity_imputed %>%
+                    mutate(daytype = factor(ifelse(between(wday(date), 2, 6), "weekday", "weekend")))
+
+daily_activity_imputed <- activity_imputed %>%
+                          group_by(interval, daytype) %>%
+                          summarize(steps = mean(steps, na.rm = TRUE))
+
+xyplot(steps ~ interval | daytype, 
+       data = daily_activity_imputed,
+       type = "l",
+       layout = c(1, 2),
+       xlab = "interval index",
+       ylab = "average number of steps",
+       main = "Activity on weekdays vs. weekend")
+```
 <!-- vim: set ts=4 sw=4 et tw=80 cc=80: -->
