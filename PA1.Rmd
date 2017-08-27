@@ -75,6 +75,39 @@ busiest_interval
 
 ## Imputing missing values
 
+```{r missing_values}
+num_missing_values <- sum(is.na(activity$steps))
+num_missing_values
+
+# substitute NAs with the avg num of steps for that interval
+activity_imputed <- activity %>%
+                    mutate(steps = ifelse(is.na(steps),
+                                          daily_activity[daily_activity$interval == interval,]$steps,
+                                          steps))
+
+steps_by_day_imputed <- activity_imputed %>%
+                        group_by(date) %>%
+                        summarize(steps = sum(steps, na.rm = TRUE))
+
+hist(steps_by_day_imputed$steps,
+     xlab = "steps/day",
+     ylab = "frequency",
+     main = "Frequencies of imputed steps/day")
+
+mean_of_steps_imputed <- mean(steps_by_day_imputed$steps)
+median_of_steps_imputed <- median(steps_by_day_imputed$steps)
+
+abline(v = mean_of_steps_imputed,   col = "red")
+abline(v = median_of_steps_imputed, col = "blue")
+
+legend(legend = c("mean", "median"),
+       col = c("red", "blue"),
+       x = "topright",
+       lty = 1)
+
+mean_of_steps_imputed
+median_of_steps_imputed
+```
 
 
 ## Are there differences in activity patterns between weekdays and weekends?
