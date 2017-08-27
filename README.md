@@ -73,6 +73,35 @@ NOTE: The GitHub repository also contains the dataset for the
 assignment so you do not have to download the data separately.
 
 
+### EDIT: Controversy
+
+The assignment requires the .Rmd to be based on the template and to be rendered using
+`knitr`, but the template cannot be rendered with `knitr`.
+
+This leaves me two choices:
+1. Forget the template and use R Markdown v1 only
+2. Forget `knitr` and use `rmarkdown` instead
+
+As of now, I chose option 2, however, I've left the command for `knitr`-based
+rendering as a comment.
+
+
+#### Rendering with knitr
+
+`echo 'library(knitr);knit2html("PA1.Rmd");' | R --no-save`
+
+Unfortunately not even `PA1_template.Rmd` can be rendered this way, because it
+contains an R Markdown v2 header (the top block between triple dashes), so it
+only produces the error:
+
+`Error: It seems you should call rmarkdown::render() instead of knitr::knit2html() because PA1.Rmd appears to be an R Markdown v2 document.`
+
+If I removed that v2 header block, it would render fine, but then we'll have no title and t.o.c.
+
+
+#### Rendering with rmarkdown
+
+`echo 'library(rmarkdown); render("PA1.Rmd", output_format="html_document");' | R --no-save`
 
 ### Loading and preprocessing the data
 
