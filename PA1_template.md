@@ -42,7 +42,7 @@ legend(legend = c("mean", "median"),
        lty = 1)
 ```
 
-![](PA1_files/figure-html/num_steps/day-1.png)<!-- -->
+![](PA1_template_files/figure-html/num_steps/day-1.png)<!-- -->
 
 ```r
 mean_of_steps
@@ -85,7 +85,7 @@ legend(legend = c("busiest interval"),
        lty = 1)
 ```
 
-![](PA1_files/figure-html/daily_activity_pattern-1.png)<!-- -->
+![](PA1_template_files/figure-html/daily_activity_pattern-1.png)<!-- -->
 
 ```r
 busiest_interval
@@ -135,7 +135,7 @@ legend(legend = c("mean", "median"),
        lty = 1)
 ```
 
-![](PA1_files/figure-html/missing_values-1.png)<!-- -->
+![](PA1_template_files/figure-html/missing_values-1.png)<!-- -->
 
 ```r
 mean_of_steps_imputed
@@ -174,5 +174,5 @@ xyplot(steps ~ interval | daytype,
        main = "Activity on weekdays vs. weekend")
 ```
 
-![](PA1_files/figure-html/weekemnd_activity-1.png)<!-- -->
+![](PA1_template_files/figure-html/weekemnd_activity-1.png)<!-- -->
 <!-- vim: set ts=4 sw=4 et tw=80 cc=80: -->

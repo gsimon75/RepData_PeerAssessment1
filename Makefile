@@ -1,4 +1,4 @@
-TARGETS=PA1.html PA1.md
+TARGETS=PA1_template.html PA1_template.md
 
 all:		$(TARGETS)
 

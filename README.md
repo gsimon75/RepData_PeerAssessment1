@@ -11,25 +11,25 @@ As of now, I chose option 2, however, I've left the command for `knitr`-based
 rendering as a comment.
 
 The only difference (AFAIK) between the two options is that the folder of the
-figures is not `figure/` (as for `knitr`), but `PA1_files`.
+figures is not `figure/` (as for `knitr`), but `PA1_template_files`.
 
 
 ### Rendering with knitr
 
-`echo 'library(knitr);knit2html("PA1.Rmd");' | R --no-save`
+`echo 'library(knitr);knit2html("PA1_template.Rmd");' | R --no-save`
 
-Unfortunately not even `PA1_template.Rmd` can be rendered this way, because it
-contains an R Markdown v2 header (the top block between triple dashes), so it
-only produces the error:
+Unfortunately not even the original `PA1_template.Rmd` can be rendered this way,
+because it contains an R Markdown v2 header (the top block between triple dashes),
+so it only produces the error:
 
-`Error: It seems you should call rmarkdown::render() instead of knitr::knit2html() because PA1.Rmd appears to be an R Markdown v2 document.`
+`Error: It seems you should call rmarkdown::render() instead of knitr::knit2html() because PA1_template.Rmd appears to be an R Markdown v2 document.`
 
 If I removed that v2 header block, it would render fine, but then we'll have no title and t.o.c.
 
 
 ### Rendering with rmarkdown
 
-`echo 'library(rmarkdown); render("PA1.Rmd", output_format="html_document");' | R --no-save`
+`echo 'library(rmarkdown); render("PA1_template.Rmd", output_format="html_document");' | R --no-save`
 
 
 ## Introduction
